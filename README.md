@@ -1,89 +1,76 @@
-# PrettyFly — Premium Storefront v4
+# PrettyFly — Studio Storefront v5
 
-A complete, polished static e-commerce website for **PrettyFly**, inspired by the strong retail UX patterns of large school-supply stores while using **original PrettyFly branding, original collections, original product names, and original local SVG artwork**.
+A new, more polished and visually distinct e-commerce website for **PrettyFly**, focused on school supplies and stationery.
 
-## Key Experience
+## What makes v5 different
 
-- Promotional top bar
-- Country / wholesale / help utility bar
-- Large product search with live suggestions
-- Responsive navigation
-- Three-slide hero carousel
-- Collection browsing
-- Launches / Best Sellers / Deals product tabs
-- 54 demo products across 10 categories
-- Product cards with ratings, sale pricing, wishlist, and cart
-- Advanced shop filters
-- Sorting and “Load more”
+- Cleaner editorial design with a modern indigo / charcoal / warm accent palette
+- Four large hero banners with original school-supply artwork
+- **72 varied products**
+- **12 school-supply categories**
+- **8 original PrettyFly collections**
+- Shop-by-grade experience
+- Product filters by category, collection, school stage, and promotion
+- Live product search
 - Product detail pages
-- Persistent cart and wishlist with `localStorage`
-- Account/login demo modal
-- Category and collection pages
-- New Arrivals and Deals pages
-- Track Order demo page
-- Wholesale and Coupons pages
-- Contact & customer support center
+- Persistent cart and wishlist using `localStorage`
+- Responsive mobile navigation
+- New Arrivals, Best Sellers, Deals, and School Kits pages
+- Categories, Collections, and Grade Guides
+- Track Order demo
+- Schools & Business page
+- Customer Support center
 - FAQ
-- Shipping, Returns, Warranty, Privacy, and Terms
-- Payment method display
-- Responsive mobile/tablet layouts
-- GitHub Pages-ready structure
-- No external images required
+- Shipping, Returns, Privacy, and Terms pages
+- Local product images — no external image dependency
+- GitHub Pages ready
 
-## Demo Customer Support
+## Product variety
+
+This package includes original demo artwork for:
+
+- Backpacks
+- Pencil Cases
+- Notebooks & Paper
+- Pens & Markers
+- Art & Lettering
+- Binders & Organization
+- Math & Geometry
+- Lunch & Hydration
+- Planners & Desk
+- School Kits
+- Tech Accessories
+- Classroom Basics
+
+## Demo Support
 
 - **Phone:** +1 (202) 555-0147
 - **Email:** support@prettyfly-net.com
 - **Hours:** Monday–Friday, 9:00 AM–6:00 PM ET
 
-**Important:** The phone number uses the reserved fictional U.S. `555-01xx` range and the email/domain is a development placeholder. Replace both before a real public launch.
+The phone number uses the reserved fictional U.S. `555-01xx` range. Replace the phone and email with your real business contact information before launch.
 
-## Product Catalog
+## Important
 
-The package includes **54 original demo products** in:
-
-- Backpacks
-- Pencil Cases
-- Notebooks
-- Writing
-- Art & Lettering
-- Folders & Organization
-- Bottles & Lunch
-- Math & Classroom
-- School Kits
-- Gifts & Desk
-
-Original PrettyFly collections include Starlight, Dino Lab, Ocean Wave, Bloom, Pixel Pop, Varsity, Cloud Nine, Galaxy, Sunset, and Classic.
-
-## GitHub Pages Deployment
-
-1. Create or open the `prettyfly-net` repository.
-2. Upload **the contents inside this ZIP folder** to the repository root.
-3. Go to **Settings → Pages**.
-4. Under **Build and deployment**, select **Deploy from a branch**.
-5. Select `main` and `/ (root)`.
-6. Save.
-
-## Before Accepting Real Orders
-
-This is a professional **front-end demo**, not a production commerce backend. Connect and configure:
+This is a **front-end demo**. Before accepting real orders, connect:
 
 - Secure payment provider
-- Product/inventory database
-- Checkout backend
+- Inventory database
+- Real checkout/backend
 - Customer authentication
-- Order-management system
-- Shipping/fulfillment service
-- Real tracking integration
-- Real support phone and email
-- Tax calculations
-- Analytics/cookie consent where applicable
+- Order management
+- Carrier/shipping integration
+- Tax calculation
+- Real support contacts
+- Analytics/cookie controls
 - Reviewed legal policies
 
-## Inspiration / Originality
+## GitHub Pages
 
-The information architecture takes inspiration from common e-commerce patterns such as prominent search, launches/best-sellers/offers, category discovery, product filters, order tracking, customer-service links, delivery/quality reassurance, and a detailed legal/support footer.
-
-All PrettyFly product artwork and website content in this package are original placeholders created for this project. No third-party character art, logos, or product photography is included.
+1. Upload all files inside this project folder to the root of `prettyfly-net`.
+2. Open **Settings → Pages**.
+3. Select **Deploy from a branch**.
+4. Choose `main` and `/ (root)`.
+5. Save.
 
 © 2026 PrettyFly. All rights reserved.

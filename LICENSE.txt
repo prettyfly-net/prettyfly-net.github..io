@@ -2,5 +2,5 @@ PrettyFly Proprietary Notice
 
 Copyright © 2026 PrettyFly. All rights reserved.
 
-The original PrettyFly branding, illustrations, text, and website design included in this package are proprietary project materials unless otherwise stated.
-Third-party services added later remain subject to their own licenses and terms.
+The PrettyFly branding, original product illustrations, written content, and custom website design included in this package are project materials for PrettyFly.
+Third-party services connected later remain subject to their own licenses and terms.
