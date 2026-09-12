@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 700">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F8FAFC"/><stop offset="1" stop-color="#EEF2FF"/></linearGradient></defs>
+<rect width="1440" height="700" rx="42" fill="url(#g)"/>
+<circle cx="1245" cy="100" r="255" fill="#F6C453" opacity=".24"/><circle cx="760" cy="770" r="460" fill="#335CFF" opacity=".08"/>
+<text x="80" y="205" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="800" letter-spacing="5" fill="#335CFF">PRETTYFLY SIGNATURE</text>
+<text x="80" y="300" font-family="Arial,Helvetica,sans-serif" font-size="76" font-weight="800" fill="#101828">School essentials.</text>
+<text x="80" y="382" font-family="Arial,Helvetica,sans-serif" font-size="76" font-weight="800" fill="#101828">Designed with intention.</text>
+<text x="80" y="445" font-family="Arial,Helvetica,sans-serif" font-size="27" fill="#667085">A cleaner way to shop backpacks, paper, writing, art, organization, and school kits.</text>
+<rect x="80" y="510" width="210" height="62" rx="18" fill="#101828"/><text x="185" y="550" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="800" fill="#fff">SHOP THE EDIT</text>
+<path d="M1020 250c0-90 50-145 127-145s127 55 127 145" fill="none" stroke="#101828" stroke-width="30" stroke-linecap="round"/>
+<rect x="930" y="200" width="430" height="395" rx="110" fill="#335CFF"/>
+<rect x="990" y="310" width="310" height="225" rx="72" fill="#60A5FA"/>
+<rect x="1045" y="410" width="200" height="100" rx="36" fill="#F6C453"/>
+<rect x="855" y="215" width="74" height="320" rx="28" fill="#F6C453" transform="rotate(-10 892 375)"/>
+</svg>

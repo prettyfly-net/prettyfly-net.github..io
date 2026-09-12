@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 190">
+<g transform="translate(10 10)">
+  <rect width="154" height="154" rx="46" fill="#101828"/>
+  <path d="M42 96V60c0-26 17-42 35-42 31 0 44 18 44 42v36" fill="none" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round"/>
+  <rect x="28" y="62" width="96" height="74" rx="25" fill="#335CFF"/>
+  <path d="M52 93h50" stroke="#F6C453" stroke-width="10" stroke-linecap="round"/>
+  <path d="M80 84l23-12-9 25-5-8z" fill="#fff"/>
+</g>
+<text x="198" y="112" font-family="Arial,Helvetica,sans-serif" font-size="86" font-weight="800" fill="#101828">Pretty</text>
+<text x="490" y="112" font-family="Arial,Helvetica,sans-serif" font-size="86" font-weight="800" fill="#335CFF">Fly</text>
+<text x="202" y="153" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="700" letter-spacing="6" fill="#667085">MODERN SCHOOL ESSENTIALS</text>
+</svg>

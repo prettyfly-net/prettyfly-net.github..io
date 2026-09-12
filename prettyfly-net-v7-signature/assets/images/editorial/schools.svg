@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440">
+<rect width="720" height="440" rx="34" fill="#FAFBFC"/><circle cx="570" cy="80" r="155" fill="#047857" opacity=".12"/>
+<rect x="75" y="92" width="190" height="250" rx="32" fill="#047857"/><rect x="107" y="135" width="126" height="64" rx="17" fill="#fff" opacity=".93"/>
+<path d="M112 245h116M112 286h92" stroke="#fff" stroke-width="18" stroke-linecap="round"/>
+<text x="330" y="190" font-family="Arial,Helvetica,sans-serif" font-size="42" font-weight="800" fill="#101828">Schools</text>
+<text x="330" y="245" font-family="Arial,Helvetica,sans-serif" font-size="20" fill="#667085">Bulk-ready products and kit planning for groups.</text>
+</svg>
