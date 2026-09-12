@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="View product details, price, availability, and related PrettyFly school supplies.">
+  <meta name="theme-color" content="#112A45">
+  <title>Product | PrettyFly</title>
+  <link rel="icon" href="assets/images/branding/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<div class="announcement">
+  <div class="container announcement__inner">
+    <span>Free U.S. shipping on orders over $49</span>
+    <span class="announcement__sep">•</span>
+    <a href="deals.html">Explore Back-to-School Deals</a>
+    <span class="announcement__sep">•</span>
+    <a href="tel:+12025550147">Support +1 (202) 555-0147</a>
+  </div>
+</div>
+<header class="site-header">
+  <div class="container header__inner">
+    <a class="brand" href="index.html" aria-label="PrettyFly home"><img src="assets/images/branding/wordmark.svg" alt="PrettyFly"></a>
+    <button class="mobile-btn" id="mobileMenuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav class="main-nav" id="mainNav" aria-label="Primary">
+      <a href="shop.html" data-nav="shop">Shop</a>
+      <a href="categories.html" data-nav="categories">Categories</a>
+      <a href="new-arrivals.html" data-nav="new">New Arrivals</a>
+      <a href="deals.html" data-nav="deals">Deals</a>
+      <a href="about.html" data-nav="about">About</a>
+      <a href="contact.html" data-nav="contact">Support</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" id="searchToggle" aria-label="Search">⌕</button>
+      <button class="icon-btn" id="wishlistBtn" aria-label="Wishlist">♡</button>
+      <button class="cart-btn" id="cartBtn">Cart <b id="cartCount">0</b></button>
+    </div>
+  </div>
+  <div class="search-bar" id="searchBar">
+    <div class="container search-bar__inner">
+      <input id="globalSearch" type="search" placeholder="Search backpacks, notebooks, pens, art supplies..." aria-label="Search products">
+      <button class="square-btn" id="searchClose" aria-label="Close search">×</button>
+    </div>
+  </div>
+  <div class="search-results" id="searchResults">
+    <div class="container search-results__inner" id="searchResultsInner"></div>
+  </div>
+</header>
+
+<main>
+<section class="section"><div class="container" id="productDetail"></div></section>
+<section class="section soft"><div class="container"><div class="section-head"><div><p class="eyebrow">YOU MAY ALSO LIKE</p><h2>Related essentials</h2></div></div><div class="product-grid" id="relatedProducts"></div></div></section>
+</main>
+
+<section class="newsletter">
+  <div class="container newsletter__inner">
+    <div>
+      <p class="eyebrow light">PRETTYFLY NOTES</p>
+      <h2>Fresh supplies. Smart deals. No clutter.</h2>
+      <p>Get seasonal school lists, product drops, creative picks, and occasional PrettyFly offers.</p>
+    </div>
+    <form id="newsletterForm">
+      <input type="email" id="newsletterEmail" placeholder="Email address" required>
+      <button class="btn btn-yellow" type="submit">Join PrettyFly</button>
+      <small id="newsletterMessage" aria-live="polite"></small>
+    </form>
+  </div>
+</section>
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <img src="assets/images/branding/wordmark.svg" alt="PrettyFly">
+      <p>Modern school supplies, stationery, art materials, and learning essentials for brighter school days.</p>
+      <div class="footer-support">
+        <strong>Customer Support</strong>
+        <a href="tel:+12025550147">+1 (202) 555-0147</a>
+        <a href="mailto:support@prettyfly-net.com">support@prettyfly-net.com</a>
+        <span>Mon–Fri, 9:00 AM–6:00 PM ET</span>
+      </div>
+    </div>
+    <div><h4>Shop</h4><a href="shop.html">All Products</a><a href="new-arrivals.html">New Arrivals</a><a href="deals.html">Deals</a><a href="categories.html">Categories</a></div>
+    <div><h4>Customer Care</h4><a href="contact.html">Contact Us</a><a href="faq.html">FAQ</a><a href="shipping.html">Shipping</a><a href="returns.html">Returns</a></div>
+    <div><h4>Company</h4><a href="about.html">About PrettyFly</a><a href="contact.html">Support Center</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
+    <div><h4>Popular</h4><a href="shop.html?category=backpacks">Backpacks</a><a href="shop.html?category=paper">Notebooks</a><a href="shop.html?category=writing">Writing</a><a href="shop.html?category=art">Art Supplies</a></div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 PrettyFly. All rights reserved.</span>
+    <div><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div>
+  </div>
+</footer>
+<div class="cart-drawer" id="cartDrawer" aria-hidden="true">
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <div class="cart-panel">
+    <div class="cart-head"><div><p class="eyebrow">YOUR BAG</p><h3>Shopping cart</h3></div><button class="icon-btn" id="cartClose" aria-label="Close cart">×</button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-empty" id="cartEmpty"><b>🛒</b><h4>Your cart is empty</h4><p>Add a few PrettyFly essentials to get started.</p></div>
+    <div class="cart-summary"><div><span>Subtotal</span><strong id="cartSubtotal">$0.00</strong></div><small>Shipping and taxes are calculated at checkout.</small><button class="btn btn-primary btn-full" id="checkoutBtn">Proceed to Checkout</button></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="assets/js/catalog.js"></script>
+<script src="assets/js/app.js"></script>
+</body></html>

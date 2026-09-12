@@ -1,0 +1,7 @@
+PrettyFly Proprietary Notice
+
+Copyright © 2026 PrettyFly. All rights reserved.
+
+The original PrettyFly branding, custom graphics, website design, written content, and proprietary commercial materials included in this project may not be redistributed, resold, or represented as another brand without permission.
+
+Third-party software, fonts, libraries, or services integrated later remain subject to their own licenses and terms.

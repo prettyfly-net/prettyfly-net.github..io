@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://prettyfly-net.github.io/prettyfly-net/sitemap.xml
