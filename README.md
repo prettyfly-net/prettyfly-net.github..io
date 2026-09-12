@@ -1,76 +1,71 @@
-# PrettyFly — Studio Storefront v5
+# PrettyFly — Signature Storefront v7
 
-A new, more polished and visually distinct e-commerce website for **PrettyFly**, focused on school supplies and stationery.
+A more polished, premium, and professional website for **PrettyFly**, focused on the company as a modern school-supplies brand.
 
-## What makes v5 different
+## Signature v7 Highlights
 
-- Cleaner editorial design with a modern indigo / charcoal / warm accent palette
-- Four large hero banners with original school-supply artwork
-- **72 varied products**
-- **12 school-supply categories**
-- **8 original PrettyFly collections**
-- Shop-by-grade experience
-- Product filters by category, collection, school stage, and promotion
+- Premium corporate e-commerce design
+- Refined PrettyFly branding and color system
+- Two editorial hero banners
+- **60 original demo products**
+- **10 focused product departments**
+- **6 original product collections**
+- 60 product illustrations embedded directly in the catalog file to prevent missing-image errors
 - Live product search
+- Catalog filters by department, collection, and status
+- Sorting and load-more behavior
 - Product detail pages
-- Persistent cart and wishlist using `localStorage`
-- Responsive mobile navigation
-- New Arrivals, Best Sellers, Deals, and School Kits pages
-- Categories, Collections, and Grade Guides
-- Track Order demo
-- Schools & Business page
-- Customer Support center
+- Persistent shopping cart and wishlist
+- New Arrivals, Best Sellers, Deals, and Collections
+- About PrettyFly
+- Schools & Business
+- Contact & Support
 - FAQ
-- Shipping, Returns, Privacy, and Terms pages
-- Local product images — no external image dependency
-- GitHub Pages ready
+- Order Tracking demo
+- Shipping, Returns, Privacy, and Terms
+- Fully responsive mobile/tablet/desktop design
+- GitHub Pages-ready files
 
-## Product variety
-
-This package includes original demo artwork for:
-
-- Backpacks
-- Pencil Cases
-- Notebooks & Paper
-- Pens & Markers
-- Art & Lettering
-- Binders & Organization
-- Math & Geometry
-- Lunch & Hydration
-- Planners & Desk
-- School Kits
-- Tech Accessories
-- Classroom Basics
-
-## Demo Support
+## Support Included
 
 - **Phone:** +1 (202) 555-0147
-- **Email:** support@prettyfly-net.com
+- **Support Email:** support@prettyfly-net.com
+- **Business Email:** business@prettyfly-net.com
 - **Hours:** Monday–Friday, 9:00 AM–6:00 PM ET
 
-The phone number uses the reserved fictional U.S. `555-01xx` range. Replace the phone and email with your real business contact information before launch.
+The phone number uses the reserved fictional U.S. `555-01xx` range. Replace it and the placeholder emails with your actual company details before launch.
 
-## Important
+## Before a Real Launch
 
-This is a **front-end demo**. Before accepting real orders, connect:
-
-- Secure payment provider
-- Inventory database
-- Real checkout/backend
-- Customer authentication
-- Order management
-- Carrier/shipping integration
-- Tax calculation
-- Real support contacts
-- Analytics/cookie controls
-- Reviewed legal policies
+Connect:
+- secure payments
+- product inventory
+- real checkout/backend
+- customer authentication
+- order management
+- fulfillment and carrier tracking
+- taxes
+- analytics/cookie consent
+- reviewed legal policies
 
 ## GitHub Pages
 
-1. Upload all files inside this project folder to the root of `prettyfly-net`.
-2. Open **Settings → Pages**.
-3. Select **Deploy from a branch**.
-4. Choose `main` and `/ (root)`.
-5. Save.
+Upload all files inside this project folder to the root of your `prettyfly-net` repository, then enable GitHub Pages from `main` / `/ (root)`.
 
-© 2026 PrettyFly. All rights reserved.
+© 2026 PrettyFly.
+
+
+## v7.1 Repair Notes
+
+This repaired package was specifically rebuilt to prevent the broken-image issue seen after GitHub upload.
+
+- Product images are embedded inside `assets/js/catalog.js`.
+- There is no separate 60-file product-image folder to accidentally miss during upload.
+- Hero and editorial SVG files were XML-validated.
+- The ZIP opens directly to the website files; there is no extra outer project folder.
+- All local HTML asset references were checked before packaging.
+
+### Important GitHub upload step
+
+Extract the ZIP first, then upload **everything you see inside it** to the root of the `prettyfly-net` repository.
+Do not upload the ZIP file itself.
