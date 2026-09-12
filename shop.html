@@ -1,122 +1,52 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Browse PrettyFly school supplies, stationery, backpacks, art materials, organization products, and school kits.">
-  <meta name="theme-color" content="#112A45">
-  <title>Shop | PrettyFly</title>
-  <link rel="icon" href="assets/images/branding/favicon.svg" type="image/svg+xml">
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="stylesheet" href="assets/css/styles.css">
-</head>
-<body>
-
-<div class="announcement">
-  <div class="container announcement__inner">
-    <span>Free U.S. shipping on orders over $49</span>
-    <span class="announcement__sep">•</span>
-    <a href="deals.html">Explore Back-to-School Deals</a>
-    <span class="announcement__sep">•</span>
-    <a href="tel:+12025550147">Support +1 (202) 555-0147</a>
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Browse all PrettyFly school supplies with filters by category and collection."><meta name="theme-color" content="#0D2E59">
+<title>Shop All | PrettyFly</title>
+<link rel="icon" href="assets/images/branding/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head><body>
+<div class="topbar"><div class="container">
+  <div class="topbar__left"><span>Free U.S. shipping over $49</span><span>•</span><a href="deals.html">Back-to-School Deals</a></div>
+  <div class="topbar__right"><a href="track-order.html">Track your order</a><a href="tel:+12025550147">Support +1 (202) 555-0147</a></div>
+</div></div>
+<div class="utility"><div class="container"><span>Country: <strong>United States</strong></span><div class="utility__links"><a href="wholesale.html">Wholesale</a><a href="faq.html">Help Center</a><a href="contact.html">Contact</a></div></div></div>
+<header class="header">
+  <div class="container header-main">
+    <button class="mobile-menu" id="mobileMenu" aria-label="Menu">☰</button>
+    <a class="brand" href="index.html"><img src="assets/images/branding/wordmark.svg" alt="PrettyFly"></a>
+    <div class="searchbox"><input id="globalSearch" type="search" placeholder="What are you looking for?" aria-label="Search products"><button aria-label="Search">⌕</button></div>
+    <div class="header-actions"><button class="header-action" id="accountBtn" title="Account">◯</button><button class="header-action" id="wishlistBtn" title="Wishlist">♡</button><button class="cart-action" id="cartBtn">Cart <span id="cartCount">0</span></button></div>
   </div>
-</div>
-<header class="site-header">
-  <div class="container header__inner">
-    <a class="brand" href="index.html" aria-label="PrettyFly home"><img src="assets/images/branding/wordmark.svg" alt="PrettyFly"></a>
-    <button class="mobile-btn" id="mobileMenuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
-    <nav class="main-nav" id="mainNav" aria-label="Primary">
-      <a href="shop.html" data-nav="shop">Shop</a>
-      <a href="categories.html" data-nav="categories">Categories</a>
-      <a href="new-arrivals.html" data-nav="new">New Arrivals</a>
-      <a href="deals.html" data-nav="deals">Deals</a>
-      <a href="about.html" data-nav="about">About</a>
-      <a href="contact.html" data-nav="contact">Support</a>
-    </nav>
-    <div class="header-actions">
-      <button class="icon-btn" id="searchToggle" aria-label="Search">⌕</button>
-      <button class="icon-btn" id="wishlistBtn" aria-label="Wishlist">♡</button>
-      <button class="cart-btn" id="cartBtn">Cart <b id="cartCount">0</b></button>
-    </div>
-  </div>
-  <div class="search-bar" id="searchBar">
-    <div class="container search-bar__inner">
-      <input id="globalSearch" type="search" placeholder="Search backpacks, notebooks, pens, art supplies..." aria-label="Search products">
-      <button class="square-btn" id="searchClose" aria-label="Close search">×</button>
-    </div>
-  </div>
-  <div class="search-results" id="searchResults">
-    <div class="container search-results__inner" id="searchResultsInner"></div>
-  </div>
+  <div class="nav-wrap"><nav class="container nav" id="mainNav">
+    <a href="shop.html">Shop</a><a href="shop.html?category=backpacks">Backpacks</a><a href="shop.html?category=notebooks">Notebooks</a>
+    <a href="shop.html?category=writing">Writing</a><a href="shop.html?category=art">Art & Lettering</a><a href="categories.html">Categories</a>
+    <a href="new-arrivals.html">New Arrivals</a><a class="sale" href="deals.html">Deals</a>
+  </nav></div>
+  <div class="search-results" id="searchResults"><div class="container search-results__inner" id="searchResultsInner"></div></div>
 </header>
 
-<main>
-<section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="index.html">Home</a> / Shop</div><p class="eyebrow">PRETTYFLY SHOP</p><h1>School essentials, organized.</h1><p>Browse our complete demo catalog by category, search by product name, or sort to find the right school-day essential.</p></div></section>
+<main><section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="index.html">Home</a> / Shop</div><p class="eyebrow">SHOP PRETTYFLY</p><h1>Find your school-day favorites.</h1><p>Filter by department, collection, launch status, or deal. Sort by price or name and load more as you browse.</p></div></section>
 <section class="section soft"><div class="container">
-  <div class="product-toolbar">
-    <div class="filter-row" id="shopFilters">
-      <button class="filter-chip active" data-filter="all">All</button>
-      <button class="filter-chip" data-filter="backpacks">Backpacks</button>
-      <button class="filter-chip" data-filter="paper">Paper</button>
-      <button class="filter-chip" data-filter="writing">Writing</button>
-      <button class="filter-chip" data-filter="art">Art</button>
-      <button class="filter-chip" data-filter="math">Math</button>
-      <button class="filter-chip" data-filter="organization">Organization</button>
-      <button class="filter-chip" data-filter="lunch">Lunch</button>
-      <button class="filter-chip" data-filter="kits">Kits</button>
-    </div>
-    <div class="sort-wrap"><label for="shopSort">Sort</label><select id="shopSort"><option value="featured">Featured</option><option value="price-low">Price: Low to High</option><option value="price-high">Price: High to Low</option><option value="name">Name</option></select></div>
-  </div>
-  <div class="product-grid" id="shopGrid"></div>
-</div></section>
-</main>
+<div class="shop-top"><div><button class="btn btn-outline filter-toggle" id="filterToggle">Filters</button> <span class="product-count" id="productCount"></span></div><div class="shop-sort"><label for="shopSort">Sort by</label><select id="shopSort"><option value="featured">Relevance</option><option value="price-low">Price: Low to High</option><option value="price-high">Price: High to Low</option><option value="name">Name A–Z</option></select></div></div>
+<div class="shop-layout"><aside class="filters" id="filters"><div class="filter-title"><h3>Filters</h3><button class="clear-filters" id="clearFilters">Clear all</button></div>
+<div class="filter-group"><h4>Department</h4><label class="check"><input type="checkbox" value="backpacks" data-filter-category> Backpacks</label><label class="check"><input type="checkbox" value="cases" data-filter-category> Pencil Cases</label><label class="check"><input type="checkbox" value="notebooks" data-filter-category> Notebooks</label><label class="check"><input type="checkbox" value="writing" data-filter-category> Writing</label><label class="check"><input type="checkbox" value="art" data-filter-category> Art & Lettering</label><label class="check"><input type="checkbox" value="organization" data-filter-category> Folders & Organization</label><label class="check"><input type="checkbox" value="lunch" data-filter-category> Bottles & Lunch</label><label class="check"><input type="checkbox" value="classroom" data-filter-category> Math & Classroom</label><label class="check"><input type="checkbox" value="kits" data-filter-category> School Kits</label><label class="check"><input type="checkbox" value="gifts" data-filter-category> Gifts & Desk</label></div>
+<div class="filter-group"><h4>Collection</h4><label class="check"><input type="checkbox" value="Starlight" data-filter-collection> Starlight</label><label class="check"><input type="checkbox" value="Dino Lab" data-filter-collection> Dino Lab</label><label class="check"><input type="checkbox" value="Ocean Wave" data-filter-collection> Ocean Wave</label><label class="check"><input type="checkbox" value="Bloom" data-filter-collection> Bloom</label><label class="check"><input type="checkbox" value="Pixel Pop" data-filter-collection> Pixel Pop</label><label class="check"><input type="checkbox" value="Varsity" data-filter-collection> Varsity</label><label class="check"><input type="checkbox" value="Cloud Nine" data-filter-collection> Cloud Nine</label><label class="check"><input type="checkbox" value="Galaxy" data-filter-collection> Galaxy</label><label class="check"><input type="checkbox" value="Sunset" data-filter-collection> Sunset</label><label class="check"><input type="checkbox" value="Classic" data-filter-collection> Classic</label></div>
+<div class="filter-group"><h4>Special</h4><label class="check"><input type="checkbox" value="new" data-filter-badge> New arrivals</label><label class="check"><input type="checkbox" value="deal" data-filter-badge> Deals & bundles</label></div>
+</aside><div><div class="product-grid" id="shopGrid"></div><div class="load-more-wrap"><button class="btn btn-blue" id="loadMore">Load more</button></div></div></div>
+</div></section></main>
 
-<section class="newsletter">
-  <div class="container newsletter__inner">
-    <div>
-      <p class="eyebrow light">PRETTYFLY NOTES</p>
-      <h2>Fresh supplies. Smart deals. No clutter.</h2>
-      <p>Get seasonal school lists, product drops, creative picks, and occasional PrettyFly offers.</p>
-    </div>
-    <form id="newsletterForm">
-      <input type="email" id="newsletterEmail" placeholder="Email address" required>
-      <button class="btn btn-yellow" type="submit">Join PrettyFly</button>
-      <small id="newsletterMessage" aria-live="polite"></small>
-    </form>
-  </div>
-</section>
-<footer class="footer">
-  <div class="container footer-grid">
-    <div class="footer-brand">
-      <img src="assets/images/branding/wordmark.svg" alt="PrettyFly">
-      <p>Modern school supplies, stationery, art materials, and learning essentials for brighter school days.</p>
-      <div class="footer-support">
-        <strong>Customer Support</strong>
-        <a href="tel:+12025550147">+1 (202) 555-0147</a>
-        <a href="mailto:support@prettyfly-net.com">support@prettyfly-net.com</a>
-        <span>Mon–Fri, 9:00 AM–6:00 PM ET</span>
-      </div>
-    </div>
-    <div><h4>Shop</h4><a href="shop.html">All Products</a><a href="new-arrivals.html">New Arrivals</a><a href="deals.html">Deals</a><a href="categories.html">Categories</a></div>
-    <div><h4>Customer Care</h4><a href="contact.html">Contact Us</a><a href="faq.html">FAQ</a><a href="shipping.html">Shipping</a><a href="returns.html">Returns</a></div>
-    <div><h4>Company</h4><a href="about.html">About PrettyFly</a><a href="contact.html">Support Center</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
-    <div><h4>Popular</h4><a href="shop.html?category=backpacks">Backpacks</a><a href="shop.html?category=paper">Notebooks</a><a href="shop.html?category=writing">Writing</a><a href="shop.html?category=art">Art Supplies</a></div>
-  </div>
-  <div class="container footer-bottom">
-    <span>© 2026 PrettyFly. All rights reserved.</span>
-    <div><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div>
-  </div>
-</footer>
-<div class="cart-drawer" id="cartDrawer" aria-hidden="true">
-  <div class="cart-overlay" id="cartOverlay"></div>
-  <div class="cart-panel">
-    <div class="cart-head"><div><p class="eyebrow">YOUR BAG</p><h3>Shopping cart</h3></div><button class="icon-btn" id="cartClose" aria-label="Close cart">×</button></div>
-    <div class="cart-items" id="cartItems"></div>
-    <div class="cart-empty" id="cartEmpty"><b>🛒</b><h4>Your cart is empty</h4><p>Add a few PrettyFly essentials to get started.</p></div>
-    <div class="cart-summary"><div><span>Subtotal</span><strong id="cartSubtotal">$0.00</strong></div><small>Shipping and taxes are calculated at checkout.</small><button class="btn btn-primary btn-full" id="checkoutBtn">Proceed to Checkout</button></div>
-  </div>
-</div>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script src="assets/js/catalog.js"></script>
-<script src="assets/js/app.js"></script>
-</body></html>
+<section class="newsletter"><div class="container"><div><h2>PrettyFly Notes</h2><p>New collections, school-list ideas, smart bundles, and occasional offers.</p></div><form id="newsletterForm"><input type="email" id="newsletterEmail" placeholder="Email address" required><button class="btn btn-yellow" type="submit">Join PrettyFly</button><small id="newsletterMsg"></small></form></div></section>
+<footer class="footer"><div class="container footer-grid">
+<div class="footer-brand"><img src="assets/images/branding/wordmark.svg" alt="PrettyFly"><p>School supplies with more color, more organization, and more personality.</p><div class="support-mini"><strong>Customer Support</strong><a href="tel:+12025550147">+1 (202) 555-0147</a><a href="mailto:support@prettyfly-net.com">support@prettyfly-net.com</a><span>Mon–Fri · 9:00 AM–6:00 PM ET</span></div><div class="payment-row"><span class="payment-chip">VISA</span><span class="payment-chip">Mastercard</span><span class="payment-chip">AmEx</span><span class="payment-chip">PayPal</span></div></div>
+<div><h4>Shop</h4><a href="shop.html">All Products</a><a href="new-arrivals.html">New Arrivals</a><a href="deals.html">Deals</a><a href="categories.html">Categories</a><a href="collections.html">Collections</a></div>
+<div><h4>Customer Care</h4><a href="track-order.html">Track Order</a><a href="shipping.html">Shipping</a><a href="returns.html">Returns</a><a href="warranty.html">Warranty</a><a href="faq.html">FAQ</a></div>
+<div><h4>Company</h4><a href="about.html">About PrettyFly</a><a href="contact.html">Contact</a><a href="wholesale.html">Wholesale</a><a href="coupons.html">Coupons</a><a href="privacy.html">Privacy</a></div>
+<div><h4>Legal</h4><a href="terms.html">Terms</a><a href="privacy.html">Privacy Policy</a><a href="returns.html">Return Policy</a><a href="shipping.html">Shipping Policy</a></div>
+</div><div class="container footer-bottom"><span>© 2026 PrettyFly. All rights reserved.</span><span>Designed for students, families, teachers & creators.</span></div></footer>
+
+<div class="cart-drawer" id="cartDrawer" aria-hidden="true"><div class="cart-overlay" id="cartOverlay"></div><div class="cart-panel"><div class="cart-head"><div><p class="eyebrow">YOUR BAG</p><h3>Shopping cart</h3></div><button class="close-btn" id="cartClose">×</button></div><div class="cart-items" id="cartItems"></div><div class="cart-empty" id="cartEmpty"><b>🛒</b><h4>Your cart is empty</h4><p>Add something fun for the school day.</p></div><div class="cart-summary"><div><span>Subtotal</span><strong id="cartSubtotal">$0.00</strong></div><small>Shipping and taxes calculated at checkout.</small><button class="btn btn-blue" id="checkoutBtn" style="width:100%">Checkout</button></div></div></div>
+
+<div class="modal" id="accountModal"><div class="modal-card"><div class="modal-head"><div><p class="eyebrow">PRETTYFLY ACCOUNT</p><h3>Sign in</h3></div><button class="close-btn" id="accountClose">×</button></div><div class="field"><label>Email</label><input type="email" placeholder="you@example.com"></div><div class="field"><label>Password</label><input type="password" placeholder="••••••••"></div><button class="btn btn-blue" style="width:100%" id="demoSignIn">Sign In</button><p style="font-size:11px;color:#66758B">Demo account interface only. Connect authentication before launch.</p></div></div>
+<div class="toast" id="toast"></div>
+<script src="assets/js/catalog.js"></script><script src="assets/js/app.js"></script></body></html>

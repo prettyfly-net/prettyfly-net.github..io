@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+<rect width="600" height="400" rx="34" fill="#F7F9FD"/>
+<circle cx="490" cy="80" r="120" fill="#FFCD38" opacity=".34"/>
+<text x="40" y="310" font-family="Arial,Helvetica,sans-serif" font-size="34" font-weight="800" fill="#0D2E59">Backpacks</text>
+<text x="40" y="350" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="600" fill="#627087">Shop PrettyFly</text>
+<g transform="translate(270,-45) scale(.58)">
+
+<circle cx="410" cy="88" r="62" fill="#FFCD38" opacity=".20"/>
+<circle cx="80" cy="410" r="80" fill="#2869FF" opacity=".12"/>
+
+<path d="M170 170c0-58 31-96 80-96s80 38 80 96" fill="none" stroke="#143B72" stroke-width="22" stroke-linecap="round"/>
+<rect x="115" y="145" width="270" height="280" rx="68" fill="#143B72"/>
+<rect x="148" y="205" width="204" height="180" rx="48" fill="#2869FF"/>
+<rect x="178" y="282" width="144" height="84" rx="28" fill="#FFCD38"/>
+<path d="M115 235H88c-24 0-38 18-38 42v70M385 235h27c24 0 38 18 38 42v70" fill="none" stroke="#143B72" stroke-width="16" stroke-linecap="round"/>
+
+
+</g>
+</svg>

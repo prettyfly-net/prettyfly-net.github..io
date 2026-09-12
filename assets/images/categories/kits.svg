@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+<rect width="600" height="400" rx="34" fill="#F7F9FD"/>
+<circle cx="490" cy="80" r="120" fill="#FFCD38" opacity=".34"/>
+<text x="40" y="310" font-family="Arial,Helvetica,sans-serif" font-size="34" font-weight="800" fill="#0D2E59">School Kits</text>
+<text x="40" y="350" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="600" fill="#627087">Shop PrettyFly</text>
+<g transform="translate(270,-45) scale(.58)">
+
+<circle cx="410" cy="88" r="62" fill="#FFCD38" opacity=".20"/>
+<circle cx="80" cy="410" r="80" fill="#4A78B0" opacity=".12"/>
+
+<rect x="88" y="165" width="324" height="225" rx="40" fill="#0D2E59"/>
+<path d="M169 165v-28c0-45 34-72 81-72s81 27 81 72v28" fill="none" stroke="#FFCD38" stroke-width="18"/>
+<rect x="135" y="207" width="65" height="135" rx="15" fill="#4A78B0"/><rect x="218" y="198" width="55" height="144" rx="15" fill="#FFCD38"/><rect x="291" y="217" width="69" height="125" rx="15" fill="#fff"/>
+
+
+</g>
+</svg>

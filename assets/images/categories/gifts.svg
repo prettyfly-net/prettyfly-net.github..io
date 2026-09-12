@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+<rect width="600" height="400" rx="34" fill="#F7F9FD"/>
+<circle cx="490" cy="80" r="120" fill="#EAF5FF" opacity=".34"/>
+<text x="40" y="310" font-family="Arial,Helvetica,sans-serif" font-size="34" font-weight="800" fill="#0D2E59">Gifts & Desk</text>
+<text x="40" y="350" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="600" fill="#627087">Shop PrettyFly</text>
+<g transform="translate(270,-45) scale(.58)">
+
+<circle cx="410" cy="88" r="62" fill="#EAF5FF" opacity=".20"/>
+<circle cx="80" cy="410" r="80" fill="#8CB8E8" opacity=".12"/>
+
+<rect x="112" y="150" width="276" height="230" rx="35" fill="#42607E"/>
+<path d="M145 210h210M145 260h170M145 310h130" stroke="#EAF5FF" stroke-width="22" stroke-linecap="round"/>
+<circle cx="341" cy="311" r="34" fill="#8CB8E8"/>
+
+
+</g>
+</svg>

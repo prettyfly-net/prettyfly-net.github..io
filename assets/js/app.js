@@ -1,161 +1,22 @@
 
-const PF = {
-  products: window.PRETTYFLY_PRODUCTS || [],
-  cart: JSON.parse(localStorage.getItem("prettyfly-cart") || "[]"),
-  wishlist: JSON.parse(localStorage.getItem("prettyfly-wishlist") || "[]")
-};
-
-function money(n){return new Intl.NumberFormat("en-US",{style:"currency",currency:"USD"}).format(n);}
-function saveState(){
-  localStorage.setItem("prettyfly-cart",JSON.stringify(PF.cart));
-  localStorage.setItem("prettyfly-wishlist",JSON.stringify(PF.wishlist));
-}
-function stars(r){return "★★★★★".slice(0,Math.round(r)) + "☆☆☆☆☆".slice(0,5-Math.round(r));}
-function productCard(p){
-  const wished = PF.wishlist.includes(p.id);
-  return `<article class="product-card">
-    <a class="product-media" href="product.html?id=${p.id}">
-      <span class="badge">${p.badge}</span>
-      <button class="wish-btn ${wished?"active":""}" data-wish="${p.id}" aria-label="Add ${p.name} to wishlist">${wished?"♥":"♡"}</button>
-      <img src="${p.image}" alt="${p.name}">
-    </a>
-    <div class="product-body">
-      <span class="product-cat">${p.label}</span>
-      <h3><a href="product.html?id=${p.id}">${p.name}</a></h3>
-      <div class="rating">${stars(p.rating)} <span>(${p.reviews})</span></div>
-      <div class="product-bottom"><span class="price">${money(p.price)}</span><button class="add-btn" data-add="${p.id}">Add to cart</button></div>
-    </div>
-  </article>`;
-}
-function wireProductButtons(){
-  document.querySelectorAll("[data-add]").forEach(b=>b.onclick=()=>addToCart(Number(b.dataset.add),1));
-  document.querySelectorAll("[data-wish]").forEach(b=>b.onclick=(e)=>{e.preventDefault();toggleWish(Number(b.dataset.wish));});
-}
-function renderStaticLists(){
-  document.querySelectorAll("[data-product-list]").forEach(el=>{
-    const type = el.dataset.productList;
-    let list = [...PF.products];
-    if(type==="featured") list = list.slice(0, Number(el.dataset.limit || 8));
-    if(type==="new") list = list.filter(p=>p.new);
-    if(type==="deals") list = list.filter(p=>p.deal);
-    el.innerHTML = list.map(productCard).join("");
-  });
-  wireProductButtons();
-}
-function addToCart(id, qty=1){
-  const p=PF.products.find(x=>x.id===id); if(!p)return;
-  const found=PF.cart.find(x=>x.id===id);
-  if(found) found.qty += qty; else PF.cart.push({id,qty});
-  saveState(); renderCart(); toast(`${p.name} added to cart`);
-}
-function removeCart(id){PF.cart=PF.cart.filter(x=>x.id!==id);saveState();renderCart();}
-function renderCart(){
-  const count=PF.cart.reduce((s,x)=>s+x.qty,0);
-  const badge=document.getElementById("cartCount"); if(badge) badge.textContent=count;
-  const items=document.getElementById("cartItems"), empty=document.getElementById("cartEmpty"), subtotal=document.getElementById("cartSubtotal");
-  if(!items)return;
-  items.innerHTML=PF.cart.map(ci=>{
-    const p=PF.products.find(x=>x.id===ci.id); if(!p)return "";
-    return `<div class="cart-item"><img src="${p.image}" alt="${p.name}"><div><h5>${p.name}</h5><small>${ci.qty} × ${money(p.price)}</small></div><button data-remove="${p.id}" aria-label="Remove ${p.name}">×</button></div>`;
-  }).join("");
-  empty.style.display=PF.cart.length?"none":"block";
-  const total=PF.cart.reduce((s,ci)=>{const p=PF.products.find(x=>x.id===ci.id);return s+(p?p.price*ci.qty:0)},0);
-  subtotal.textContent=money(total);
-  document.querySelectorAll("[data-remove]").forEach(b=>b.onclick=()=>removeCart(Number(b.dataset.remove)));
-}
-function toggleWish(id){
-  PF.wishlist = PF.wishlist.includes(id) ? PF.wishlist.filter(x=>x!==id) : [...PF.wishlist,id];
-  saveState();
-  renderStaticLists();
-  if(document.getElementById("shopGrid")) renderShop();
-  toast(PF.wishlist.includes(id)?"Added to wishlist":"Removed from wishlist");
-}
-function toast(msg){
-  const t=document.getElementById("toast"); if(!t)return;t.textContent=msg;t.classList.add("show");clearTimeout(window.pfToast);window.pfToast=setTimeout(()=>t.classList.remove("show"),2200);
-}
-function openCart(){const d=document.getElementById("cartDrawer");d.classList.add("open");d.setAttribute("aria-hidden","false");document.body.classList.add("no-scroll");}
-function closeCart(){const d=document.getElementById("cartDrawer");d.classList.remove("open");d.setAttribute("aria-hidden","true");document.body.classList.remove("no-scroll");}
-
-function renderShop(){
-  const grid=document.getElementById("shopGrid"); if(!grid)return;
-  const params=new URLSearchParams(location.search);
-  if(!window.pfShopFilter) window.pfShopFilter=params.get("category")||"all";
-  let list=[...PF.products];
-  if(window.pfShopFilter!=="all") list=list.filter(p=>p.category===window.pfShopFilter);
-  const sort=(document.getElementById("shopSort")||{}).value||"featured";
-  if(sort==="price-low")list.sort((a,b)=>a.price-b.price);
-  if(sort==="price-high")list.sort((a,b)=>b.price-a.price);
-  if(sort==="name")list.sort((a,b)=>a.name.localeCompare(b.name));
-  grid.innerHTML=list.map(productCard).join("");
-  document.querySelectorAll("#shopFilters .filter-chip").forEach(b=>b.classList.toggle("active",b.dataset.filter===window.pfShopFilter));
-  wireProductButtons();
-}
-function initShop(){
-  const filters=document.getElementById("shopFilters");
-  if(filters) filters.querySelectorAll(".filter-chip").forEach(b=>b.onclick=()=>{window.pfShopFilter=b.dataset.filter;history.replaceState({}, "", b.dataset.filter==="all"?"shop.html":`shop.html?category=${b.dataset.filter}`);renderShop();});
-  const sort=document.getElementById("shopSort"); if(sort) sort.onchange=renderShop;
-  renderShop();
-}
-function renderProductDetail(){
-  const root=document.getElementById("productDetail"); if(!root)return;
-  const id=Number(new URLSearchParams(location.search).get("id")||1);
-  const p=PF.products.find(x=>x.id===id) || PF.products[0];
-  document.title=`${p.name} | PrettyFly`;
-  root.innerHTML=`<div class="breadcrumbs"><a href="index.html">Home</a> / <a href="shop.html">Shop</a> / ${p.name}</div>
-    <div class="product-detail">
-      <div class="product-detail__image"><img src="${p.image}" alt="${p.name}"></div>
-      <div class="product-detail__info">
-        <p class="eyebrow">${p.label}</p><h1>${p.name}</h1>
-        <div class="rating">${stars(p.rating)} <span>${p.rating.toFixed(1)} · ${p.reviews} reviews</span></div>
-        <div class="product-detail__price">${money(p.price)}</div>
-        <p class="product-detail__desc">${p.description} Built to fit naturally into everyday school routines with a clean, practical PrettyFly design.</p>
-        <div class="product-meta"><div><span>SKU</span><strong>${p.sku}</strong></div><div><span>Availability</span><strong>${p.stock}</strong></div><div><span>Returns</span><strong>30 days</strong></div><div><span>Support</span><strong>Mon–Fri</strong></div></div>
-        <div class="qty-row"><div class="qty"><button id="qtyMinus">−</button><input id="qtyInput" value="1" inputmode="numeric"><button id="qtyPlus">+</button></div><button class="btn btn-primary" id="detailAdd">Add to Cart</button></div>
-        <div class="detail-actions"><button class="btn btn-secondary" id="detailWish">${PF.wishlist.includes(p.id)?"♥ Saved":"♡ Add to Wishlist"}</button><a class="btn btn-secondary" href="contact.html">Ask a Question</a></div>
-        <div class="notice"><strong>Need help?</strong> Call PrettyFly Support at <a href="tel:+12025550147">+1 (202) 555-0147</a>.</div>
-      </div>
-    </div>`;
-  let qty=1;
-  const input=document.getElementById("qtyInput");
-  document.getElementById("qtyMinus").onclick=()=>{qty=Math.max(1,qty-1);input.value=qty};
-  document.getElementById("qtyPlus").onclick=()=>{qty++;input.value=qty};
-  input.oninput=()=>{qty=Math.max(1,parseInt(input.value||"1",10)||1);input.value=qty};
-  document.getElementById("detailAdd").onclick=()=>addToCart(p.id,qty);
-  document.getElementById("detailWish").onclick=()=>{toggleWish(p.id);renderProductDetail();};
-  const rel=document.getElementById("relatedProducts");
-  rel.innerHTML=PF.products.filter(x=>x.category===p.category&&x.id!==p.id).slice(0,4).map(productCard).join("") || PF.products.filter(x=>x.id!==p.id).slice(0,4).map(productCard).join("");
-  wireProductButtons();
-}
-function initSearch(){
-  const toggle=document.getElementById("searchToggle"), bar=document.getElementById("searchBar"), input=document.getElementById("globalSearch"), close=document.getElementById("searchClose"), results=document.getElementById("searchResults"), inner=document.getElementById("searchResultsInner");
-  if(!toggle)return;
-  toggle.onclick=()=>{bar.classList.toggle("open");if(bar.classList.contains("open"))setTimeout(()=>input.focus(),50)};
-  close.onclick=()=>{bar.classList.remove("open");results.classList.remove("open");input.value=""};
-  input.oninput=()=>{
-    const q=input.value.trim().toLowerCase();
-    if(!q){results.classList.remove("open");inner.innerHTML="";return}
-    const hits=PF.products.filter(p=>`${p.name} ${p.label} ${p.category}`.toLowerCase().includes(q)).slice(0,6);
-    inner.innerHTML=hits.length?hits.map(p=>`<a class="search-hit" href="product.html?id=${p.id}"><img src="${p.image}" alt=""><div><strong>${p.name}</strong><span>${p.label} · ${money(p.price)}</span></div></a>`).join(""):`<div class="empty-state" style="padding:18px">No matching products.</div>`;
-    results.classList.add("open");
-  };
-}
-function initMobile(){
-  const b=document.getElementById("mobileMenuBtn"),n=document.getElementById("mainNav"); if(!b)return;
-  b.onclick=()=>{n.classList.toggle("open");b.setAttribute("aria-expanded",n.classList.contains("open"))};
-}
-function initForms(){
-  const news=document.getElementById("newsletterForm");
-  if(news) news.onsubmit=e=>{e.preventDefault();const email=document.getElementById("newsletterEmail");document.getElementById("newsletterMessage").textContent=`Thanks! ${email.value} is on the PrettyFly list.`;email.value=""};
-  const contact=document.getElementById("contactForm");
-  if(contact) contact.onsubmit=e=>{e.preventDefault();document.getElementById("contactMessage").textContent="Thanks — your demo support request has been recorded in this browser.";contact.reset();};
-}
-function initFAQ(){document.querySelectorAll(".faq-q").forEach(q=>q.onclick=()=>q.closest(".faq-item").classList.toggle("open"))}
-function initCartUI(){
-  document.getElementById("cartBtn")?.addEventListener("click",openCart);
-  document.getElementById("cartClose")?.addEventListener("click",closeCart);
-  document.getElementById("cartOverlay")?.addEventListener("click",closeCart);
-  document.getElementById("checkoutBtn")?.addEventListener("click",()=>toast("Demo checkout — connect a payment provider before launch."));
-}
-document.addEventListener("DOMContentLoaded",()=>{
-  renderStaticLists();renderCart();initShop();renderProductDetail();initSearch();initMobile();initForms();initFAQ();initCartUI();
-});
+const PF={products:window.PRETTYFLY_PRODUCTS||[],cart:JSON.parse(localStorage.getItem("pf-cart")||"[]"),wish:JSON.parse(localStorage.getItem("pf-wish")||"[]")};
+const money=n=>new Intl.NumberFormat("en-US",{style:"currency",currency:"USD"}).format(n);
+const save=()=>{localStorage.setItem("pf-cart",JSON.stringify(PF.cart));localStorage.setItem("pf-wish",JSON.stringify(PF.wish));};
+const starText=r=>"★★★★★".slice(0,Math.round(r))+"☆☆☆☆☆".slice(0,5-Math.round(r));
+function toast(m){const t=document.getElementById("toast");if(!t)return;t.textContent=m;t.classList.add("show");clearTimeout(window.pft);window.pft=setTimeout(()=>t.classList.remove("show"),2100)}
+function card(p){return `<article class="product-card"><a class="product-media" href="product.html?id=${p.id}"><span class="product-badge">${p.badge}</span><button class="wish ${PF.wish.includes(p.id)?"active":""}" data-wish="${p.id}">${PF.wish.includes(p.id)?"♥":"♡"}</button><img src="${p.image}" alt="${p.name}"></a><div class="product-info"><span class="cat">${p.collection} · ${p.label}</span><h3><a href="product.html?id=${p.id}">${p.name}</a></h3><div class="rating">${starText(p.rating)} <span>(${p.reviews})</span></div><div class="price-row"><div class="prices"><span class="price">${money(p.price)}</span>${p.oldPrice?`<span class="old-price">${money(p.oldPrice)}</span>`:""}</div><button class="buy" data-add="${p.id}">ADD</button></div></div></article>`}
+function wireCards(){document.querySelectorAll("[data-add]").forEach(b=>b.onclick=e=>{e.preventDefault();add(Number(b.dataset.add),1)});document.querySelectorAll("[data-wish]").forEach(b=>b.onclick=e=>{e.preventDefault();wish(Number(b.dataset.wish))})}
+function add(id,qty=1){const p=PF.products.find(x=>x.id===id);if(!p)return;const row=PF.cart.find(x=>x.id===id);row?row.qty+=qty:PF.cart.push({id,qty});save();renderCart();toast(`${p.name} added to cart`)}
+function wish(id){PF.wish=PF.wish.includes(id)?PF.wish.filter(x=>x!==id):[...PF.wish,id];save();renderDynamic();toast(PF.wish.includes(id)?"Saved to wishlist":"Removed from wishlist")}
+function renderCart(){const count=PF.cart.reduce((s,x)=>s+x.qty,0);const b=document.getElementById("cartCount");if(b)b.textContent=count;const items=document.getElementById("cartItems"),empty=document.getElementById("cartEmpty"),subtotal=document.getElementById("cartSubtotal");if(!items)return;items.innerHTML=PF.cart.map(ci=>{const p=PF.products.find(x=>x.id===ci.id);return p?`<div class="cart-item"><img src="${p.image}" alt="${p.name}"><div><h5>${p.name}</h5><small>${ci.qty} × ${money(p.price)}</small></div><button data-remove="${p.id}">×</button></div>`:""}).join("");empty.style.display=PF.cart.length?"none":"block";const total=PF.cart.reduce((s,ci)=>{const p=PF.products.find(x=>x.id===ci.id);return s+(p?p.price*ci.qty:0)},0);subtotal.textContent=money(total);document.querySelectorAll("[data-remove]").forEach(b=>b.onclick=()=>{PF.cart=PF.cart.filter(x=>x.id!==Number(b.dataset.remove));save();renderCart()})}
+function openCart(){document.getElementById("cartDrawer")?.classList.add("open");document.body.classList.add("lock")}function closeCart(){document.getElementById("cartDrawer")?.classList.remove("open");document.body.classList.remove("lock")}
+function staticLists(){document.querySelectorAll("[data-list]").forEach(el=>{const type=el.dataset.list;let list=[...PF.products];if(type==="new")list=list.filter(x=>x.new);if(type==="best")list=list.filter(x=>x.best);if(type==="deals")list=list.filter(x=>x.deal);if(type==="launch")list=list.filter(x=>x.new||x.id<=8);const limit=Number(el.dataset.limit||12);el.innerHTML=list.slice(0,limit).map(card).join("")});wireCards()}
+function homeTabs(){const root=document.getElementById("homeProducts");if(!root)return;let mode="launch";const render=()=>{let list=PF.products;if(mode==="launch")list=list.filter(x=>x.new||x.id<=8);if(mode==="best")list=list.filter(x=>x.best);if(mode==="deals")list=list.filter(x=>x.deal);root.innerHTML=list.slice(0,8).map(card).join("");wireCards()};document.querySelectorAll("[data-home-tab]").forEach(b=>b.onclick=()=>{mode=b.dataset.homeTab;document.querySelectorAll("[data-home-tab]").forEach(x=>x.classList.toggle("active",x===b));render()});render()}
+function hero(){const track=document.getElementById("heroTrack");if(!track)return;const slides=[...track.children],dots=[...document.querySelectorAll(".hero-dot")];let i=0;const go=n=>{i=(n+slides.length)%slides.length;track.style.transform=`translateX(-${i*100}%)`;dots.forEach((d,j)=>d.classList.toggle("active",j===i))};document.getElementById("heroPrev").onclick=()=>go(i-1);document.getElementById("heroNext").onclick=()=>go(i+1);dots.forEach((d,j)=>d.onclick=()=>go(j));setInterval(()=>go(i+1),6500)}
+function search(){const q=document.getElementById("globalSearch"),box=document.getElementById("searchResults"),inner=document.getElementById("searchResultsInner");if(!q)return;q.oninput=()=>{const s=q.value.trim().toLowerCase();if(!s){box.classList.remove("open");return}const hits=PF.products.filter(p=>`${p.name} ${p.collection} ${p.label}`.toLowerCase().includes(s)).slice(0,6);inner.innerHTML=hits.length?hits.map(p=>`<a class="search-hit" href="product.html?id=${p.id}"><img src="${p.image}" alt=""><div><strong>${p.name}</strong><small>${p.collection} · ${p.label}</small></div><b>${money(p.price)}</b></a>`).join(""):`<div style="padding:16px;color:#66758B">No matching products.</div>`;box.classList.add("open")};document.addEventListener("click",e=>{if(!e.target.closest(".searchbox")&&!e.target.closest(".search-results"))box.classList.remove("open")})}
+let SHOP_VISIBLE=12;
+function shop(){const grid=document.getElementById("shopGrid");if(!grid)return;const params=new URLSearchParams(location.search);const preset=params.get("category");if(preset){document.querySelectorAll(`[data-filter-category="${preset}"]`).forEach(x=>x.checked=true)}const checked=(key)=>[...document.querySelectorAll(`[data-filter-${key}]:checked`)].map(x=>x.value);let list=[...PF.products];const cats=checked("category"),cols=checked("collection"),badges=checked("badge");if(cats.length)list=list.filter(p=>cats.includes(p.category));if(cols.length)list=list.filter(p=>cols.includes(p.collection));if(badges.length){if(badges.includes("new"))list=list.filter(p=>p.new);if(badges.includes("deal"))list=list.filter(p=>p.deal)}const sort=document.getElementById("shopSort")?.value||"featured";if(sort==="price-low")list.sort((a,b)=>a.price-b.price);if(sort==="price-high")list.sort((a,b)=>b.price-a.price);if(sort==="name")list.sort((a,b)=>a.name.localeCompare(b.name));document.getElementById("productCount").textContent=`${list.length} products`;grid.innerHTML=list.slice(0,SHOP_VISIBLE).map(card).join("");wireCards();const more=document.getElementById("loadMore");if(more)more.style.display=SHOP_VISIBLE<list.length?"inline-flex":"none"}
+function product(){const root=document.getElementById("productDetail");if(!root)return;const id=Number(new URLSearchParams(location.search).get("id")||1),p=PF.products.find(x=>x.id===id)||PF.products[0];document.title=`${p.name} | PrettyFly`;root.innerHTML=`<div class="breadcrumbs"><a href="index.html">Home</a> / <a href="shop.html">Shop</a> / ${p.name}</div><div class="product-detail"><div class="product-detail__image"><img src="${p.image}" alt="${p.name}"></div><div class="product-detail__info"><p class="eyebrow">${p.collection} COLLECTION</p><h1>${p.name}</h1><div class="rating">${starText(p.rating)} <span>${p.rating} · ${p.reviews} reviews</span></div><div class="product-detail__price">${money(p.price)}</div><p class="product-detail__desc">${p.description} Easy to pair with other PrettyFly essentials from the same collection.</p><div class="product-meta"><div><span>SKU</span><strong>${p.sku}</strong></div><div><span>Availability</span><strong>${p.stock}</strong></div><div><span>Returns</span><strong>30 days</strong></div><div><span>Support</span><strong>Mon–Fri</strong></div></div><div class="qty-row"><div class="qty"><button id="minus">−</button><input id="qty" value="1"><button id="plus">+</button></div><button class="btn btn-blue" id="productAdd">Add to Cart</button></div><div class="detail-actions"><button class="btn btn-outline" id="productWish">${PF.wish.includes(p.id)?"♥ Saved":"♡ Save"}</button><a class="btn btn-outline" href="contact.html">Ask Support</a></div><div class="notice"><strong>Need help?</strong> Call PrettyFly Support at +1 (202) 555-0147.</div></div></div>`;let q=1,input=document.getElementById("qty");document.getElementById("minus").onclick=()=>{q=Math.max(1,q-1);input.value=q};document.getElementById("plus").onclick=()=>{q++;input.value=q};document.getElementById("productAdd").onclick=()=>add(p.id,q);document.getElementById("productWish").onclick=()=>{wish(p.id);product()};const rel=document.getElementById("related");if(rel){let r=PF.products.filter(x=>x.category===p.category&&x.id!==p.id).slice(0,4);rel.innerHTML=r.map(card).join("");wireCards()}}
+function initUI(){document.getElementById("cartBtn")?.addEventListener("click",openCart);document.getElementById("cartClose")?.addEventListener("click",closeCart);document.getElementById("cartOverlay")?.addEventListener("click",closeCart);document.getElementById("checkoutBtn")?.addEventListener("click",()=>toast("Demo checkout — connect a payment provider before launch."));const menu=document.getElementById("mobileMenu"),nav=document.getElementById("mainNav");if(menu)menu.onclick=()=>nav.classList.toggle("open");const modal=document.getElementById("accountModal");document.getElementById("accountBtn")?.addEventListener("click",()=>modal.classList.add("open"));document.getElementById("accountClose")?.addEventListener("click",()=>modal.classList.remove("open"));document.getElementById("demoSignIn")?.addEventListener("click",()=>{modal.classList.remove("open");toast("Demo account only")});document.getElementById("wishlistBtn")?.addEventListener("click",()=>toast(`${PF.wish.length} item${PF.wish.length===1?"":"s"} saved`));document.getElementById("newsletterForm")?.addEventListener("submit",e=>{e.preventDefault();const em=document.getElementById("newsletterEmail");document.getElementById("newsletterMsg").textContent=`Thanks! ${em.value} is on the list.`;em.value=""});document.querySelectorAll(".faq-q").forEach(q=>q.onclick=()=>q.closest(".faq-item").classList.toggle("open"));document.querySelectorAll("[data-filter-category],[data-filter-collection],[data-filter-badge]").forEach(x=>x.onchange=()=>{SHOP_VISIBLE=12;shop()});document.getElementById("shopSort")?.addEventListener("change",shop);document.getElementById("clearFilters")?.addEventListener("click",()=>{document.querySelectorAll(".filters input").forEach(x=>x.checked=false);history.replaceState({}, "", "shop.html");SHOP_VISIBLE=12;shop()});document.getElementById("loadMore")?.addEventListener("click",()=>{SHOP_VISIBLE+=12;shop()});document.getElementById("filterToggle")?.addEventListener("click",()=>document.getElementById("filters")?.classList.toggle("open"));const cf=document.getElementById("contactForm");if(cf)cf.onsubmit=e=>{e.preventDefault();cf.reset();toast("Demo support request submitted")};const tf=document.getElementById("trackForm");if(tf)tf.onsubmit=e=>{e.preventDefault();document.getElementById("trackResult").classList.add("show")}}
+function renderDynamic(){staticLists();homeTabs();shop();product();renderCart()}
+document.addEventListener("DOMContentLoaded",()=>{renderDynamic();hero();search();initUI()});

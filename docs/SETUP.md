@@ -1,15 +1,11 @@
-# PrettyFly Setup Checklist
+# PrettyFly Pre-Launch Checklist
 
-## Before publishing
-
-- Replace demo support phone `+1 (202) 555-0147` with your real business number.
-- Replace `support@prettyfly-net.com` with a working business inbox.
-- Replace placeholder policy language with reviewed policies.
-- Replace demo product names/prices with your real catalog.
-- Connect secure checkout and a backend before accepting payments.
-- Update `robots.txt` and `sitemap.xml` if your final domain changes.
-- Add real social-media links when accounts are ready.
-
-## GitHub Pages
-
-Publish from the repository root on the `main` branch.
+- Replace `+1 (202) 555-0147` with your real customer-support number.
+- Replace `support@prettyfly-net.com` with your real support inbox.
+- Replace demo products, prices, stock status, and collections with the actual catalog.
+- Connect a real checkout/payment provider.
+- Connect order management and shipment tracking.
+- Review Shipping, Returns, Warranty, Privacy, and Terms with appropriate professionals.
+- Update sitemap URLs if you use a custom domain.
+- Add real social-media links after creating the accounts.
+- Add analytics and consent tools if used.
